@@ -11,4 +11,4 @@ make
 
 pwd
 ./test/tests 
-./src/graphs
+./src/pack
