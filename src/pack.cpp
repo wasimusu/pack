@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 #include "pack.h"
 
 /**
@@ -22,11 +23,11 @@ void split(BoundingBox &canvas, BoundingBox &input, BoundingBox &output_rect1, B
 
 // Insert items into a tree using DFS
 void insert(TreeNode *root, BoundingBox &item) {
-
-  std::vector<TreeNode *> stack = {root};
+  std::cout << "Insert "<< item.width << ", " << item.height << std::endl;
+  std::queue<TreeNode *> stack; stack.push(root);
   while (!stack.empty()) {
-    auto root = stack.back();
-    stack.pop_back();
+    auto root = stack.front(); stack.pop();
+    std::cout << root->value.width << ", " << root->value.height << std::endl;
 
     if (!root) continue;
 
@@ -47,10 +48,12 @@ void insert(TreeNode *root, BoundingBox &item) {
       }
 
       // Add the node's child to the stack
-      stack.push_back(root->left);
-      stack.push_back(root->right);
+      stack.push(root->left);
+      stack.push(root->right);
     }
   }
+
+  if (item.index_r == -1) std::cout << "Could not be inserted" << std::endl;
 
 }
 

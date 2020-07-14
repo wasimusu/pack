@@ -7,3 +7,5 @@ docs/latex/*
 *.o
 docs/_build
 *.xml
+test/googletest/*
+build

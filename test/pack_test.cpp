@@ -12,7 +12,7 @@ bool all_positions_occupied(std::vector<BoundingBox> &rects) {
   std::set<std::pair<int, int>> positions;
 
   for (const auto &rect:rects) {
-//    std::cout << rect.index_c << ", " << rect.index_r << std::endl;
+    std::cout << rect.index_c << ", " << rect.index_r << std::endl;
     positions.insert({rect.index_r, rect.index_c});
   }
 
@@ -129,15 +129,13 @@ TEST(brick, unique_pairs) {
   rects.emplace_back(BoundingBox(0, 0, 2, 7));
   rects.emplace_back(BoundingBox(0, 0, 2, 13));
 
-
   std::sort(rects.begin(), rects.end(), [](const BoundingBox &first, const BoundingBox &second) {
     return first.width < second.width;
   });
 
-  int estimated_width = BIG_SQ_SIDE, estimated_height = 1 * 2;
+  int estimated_width = BIG_SQ_SIDE, estimated_height = 4 * 2;
   pack_rectangles(rects, std::ref(estimated_height), std::ref(estimated_width));
 
-  std::cout << "\nPacking mixed squares. One quad of small squares." << endl;
-  all_positions_occupied(rects);
-//  EXPECT_EQ(all_positions_occupied(rects), true);
+  std::cout << "\nPacking bricks. Mixed width rectangles." << endl;
+  EXPECT_EQ(all_positions_occupied(rects), true);
 }
