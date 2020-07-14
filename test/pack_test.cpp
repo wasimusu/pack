@@ -130,7 +130,7 @@ TEST(brick, unique_pairs) {
   rects.emplace_back(BoundingBox(0, 0, 2, 13));
 
   std::sort(rects.begin(), rects.end(), [](const BoundingBox &first, const BoundingBox &second) {
-    return first.width < second.width;
+    return first.width > second.width;
   });
 
   int estimated_width = BIG_SQ_SIDE, estimated_height = 4 * 2;

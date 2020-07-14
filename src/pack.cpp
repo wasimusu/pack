@@ -48,8 +48,8 @@ void insert(TreeNode *root, BoundingBox &item) {
       }
 
       // Add the node's child to the stack
-      stack.push(root->left);
       stack.push(root->right);
+      stack.push(root->left);
     }
   }
 
