@@ -9,3 +9,5 @@ docs/_build
 *.xml
 test/googletest/*
 build
+CMakeLists.txt
+test/CMakeLists.txt
